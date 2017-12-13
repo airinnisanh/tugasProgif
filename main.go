@@ -16,31 +16,31 @@ type barang struct {
 	Nama_Barang string
 	Kategori string
 	Harga int
-}
+} //tipe untuk barang yang sesuai dengan database
 
 type barangjson struct {
 	ID_Barang int `json: "ID_Barang, omitempty"`
 	Nama_Barang string `json: "Nama_Barang, omitempty"`
 	Kategori string `json: "Kategori, omitempty"`
 	Harga int `json: "Harga, omitempty"`
-}
+} //tipe untuk input barang yang sesuai dengan database
 
 func main() {
-	port := 8080
+	port := 8080 //web service akan dijalankan pada port 8080
 	http.HandleFunc("/databarang/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 			case "GET":
 				s := r.URL.Query().Get("Parameter")
 				if (strings.Compare("urutharga", s) == 0) {
-					GetBarangByHarga(w,r)
+					GetBarangByHarga(w,r) // untuk url /?=urutharga , akan menjalankan fungsi getBarangByHarga
 				} else
 				if (s != "") {
-					GetBarangByKategori(w,r,s)
+					GetBarangByKategori(w,r,s) // untuk url /?=[Kategori] , akan menjalankan fungsi getBarangByKategori
 				} else {
-					GetBarang(w,r)
+					GetBarang(w,r) // untuk tambahan url kosong , akan menjalankan fungsi getBarang
 				}
 			case "POST":
-				InputBarang(w,r)	
+				InputBarang(w,r) // untuk case POST, akan menjalankan fungsi InputBarang	
 			default:
 				http.Error(w,"invalid",405)
 		}
