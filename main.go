@@ -33,8 +33,7 @@ func main() {
 				s := r.URL.Query().Get("Parameter")
 				if (strings.Compare("urutharga", s) == 0) {
 					GetBarangByHarga(w,r) // untuk url /?=urutharga , akan menjalankan fungsi getBarangByHarga
-				} else
-				if (s != "") {
+				} else if (s != "") {
 					GetBarangByKategori(w,r,s) // untuk url /?=[Kategori] , akan menjalankan fungsi getBarangByKategori
 				} else {
 					GetBarang(w,r) // untuk tambahan url kosong , akan menjalankan fungsi getBarang
@@ -50,7 +49,7 @@ func main() {
 }
 
 func GetBarang(w http.ResponseWriter, r *http.Request) {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/data_barang")
+	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang_airin")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -76,7 +75,7 @@ func GetBarang(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetBarangByKategori(w http.ResponseWriter, r *http.Request, Kategori string) {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/data_barang")
+	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,7 +101,7 @@ func GetBarangByKategori(w http.ResponseWriter, r *http.Request, Kategori string
 }
 
 func GetBarangByHarga(w http.ResponseWriter, r *http.Request) {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/data_barang")
+	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -138,7 +137,7 @@ func InputBarang(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	db,err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/data_barang")
+	db,err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang")
 	if err != nil{
 		log.Fatal(err)
 	}
