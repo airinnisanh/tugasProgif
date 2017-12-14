@@ -75,7 +75,7 @@ func GetBarang(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetBarangByKategori(w http.ResponseWriter, r *http.Request, Kategori string) {
-	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang")
+	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang_airin")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -101,7 +101,7 @@ func GetBarangByKategori(w http.ResponseWriter, r *http.Request, Kategori string
 }
 
 func GetBarangByHarga(w http.ResponseWriter, r *http.Request) {
-	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang")
+	db, err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang_airin")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -137,7 +137,7 @@ func InputBarang(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	db,err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang")
+	db,err := sql.Open("mysql", "root:@tcp(167.205.67.251:3306)/data_barang_airin")
 	if err != nil{
 		log.Fatal(err)
 	}
